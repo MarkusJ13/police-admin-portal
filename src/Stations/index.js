@@ -39,7 +39,7 @@ export class Users extends React.Component{
 						</button>
 					</div>
 				</div>
-				<div className="list-group mt-2">
+				<div className="mt-2">
 					{
 						stations.map(station=>{
 							return <Station firebaseApp={firebaseApp} key={station.id} {...station}/>
