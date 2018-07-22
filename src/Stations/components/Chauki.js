@@ -42,27 +42,61 @@ export class Chauki extends React.Component {
 		const newValue = e.target.value
 		this.setState({name: newValue})
 	}
+	addNewChild = e => {
+		const {addChild} = this.props
+		const {newChildName: name} = this.state
+		addChild(name)
+	}
+	toggleAddChild = e => {
+		if (this.state.isAddingChild) {
+			this.setState({
+				isAddingChild: false,
+				newChildName: "",
+			})
+		} else {
+			this.setState({
+				isAddingChild: true,
+			})
+		}
+	}
+	handleNewChildNameChange = e => {
+		this.setState({
+			newChildName: e.target.value,
+		})
+	}
 	render() {
 		const {child} = this.props
-		const {name, isEditing} = this.state
+		const {name, isEditing, newChildName, isAddingChild} = this.state
 		return (<div>
 			{
 				isEditing
 				? <div>
 					<input type="text" value={name} onChange={this.handleNameChange}/>
-					<button onClick={this.save}>Save</button>
-					<button onClick={this.toggleEditMode}>Cancel</button>
+					<button className="btn btn-primary mr-2" onClick={this.save}>Save</button>
+					<button className="btn" onClick={this.toggleEditMode}>Cancel</button>
 				</div>
-				: <div>
+				: <div style={{
+					display: "flex",
+					justifyContent: "space-between",
+					alignItems: "center",
+				}}>
 					<span>{this.props.name}</span>
-					<button onClick={this.toggleEditMode}>Edit</button>
+					<div>
+						<button className="btn btn-primary mr-2" onClick={this.toggleAddChild}>Add Child</button>
+						<button className="btn btn-dark" onClick={this.toggleEditMode}>Edit</button>
+					</div>
 				</div>
 			}
+			<div className={`add-new-child ${isAddingChild ? "visible": "hidden"}`}>
+				<input type="text" value={newChildName} onChange={this.handleNewChildNameChange}/>
+				<button className="btn btn-primary mr-2" onClick={this.addNewChild}>Save</button>
+				<button className="btn btn-dark" onClick={this.toggleAddChild}>Cancel</button>
+			</div>
 			<div style={{
-				padding: "10px 30px"
+				padding: "10px 0 0 30px"
 			}}>
 				{
-					Object.keys(child).map(key => {
+					child && Object.keys(child).map(key => {
 						const b = child[key]
 						const handleUpdate = data => {
 							this.updateChild(key, data)

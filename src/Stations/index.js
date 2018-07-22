@@ -2,8 +2,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import Station from "./components/Station.js";
 import AddStation from "./components/AddStation.js";
+import {List} from "./components/styled-components"
 
-export class Users extends React.Component{
+export class Stations extends React.Component{
 	static propTypes = {
 		firebaseApp: PropTypes.object,
 	}
@@ -39,13 +40,13 @@ export class Users extends React.Component{
 						</button>
 					</div>
 				</div>
-				<div className="mt-2">
+				<List>
 					{
 						stations.map(station=>{
 							return <Station firebaseApp={firebaseApp} key={station.id} {...station}/>
 						})
 					}
-				</div>
+				</List>
 			</div>
 			{
 				addUserDialogOpen ? <AddStation
@@ -59,4 +60,4 @@ export class Users extends React.Component{
 	}
 }
 
-export default Users
+export default Stations

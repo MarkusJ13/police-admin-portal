@@ -108,7 +108,6 @@ export class AddStation extends React.Component{
 	updateChild = (key, data) => {
 		const {firebaseApp, databasePath} = this.props
 		const stationId = this.props.id
-		console.log(data)
 		const updates = {
 			[`${databasePath}/${stationId}/child/${key}`]: data
 		}

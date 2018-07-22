@@ -37,17 +37,21 @@ export class Beet extends React.Component {
 	render () {
 		const {name, isEditing} = this.state
 		return (
-			<div>
+			<div className="beet-items">
 				{
 					isEditing
 					? <div>
 						<input onChange={this.handleNameChange} type="text" value={name}/>
-						<button onClick={this.save}>Save</button>
-						<button onClick={this.toggleEditMode}>Cancel</button>
+						<button className="btn btn-primary mr-2" onClick={this.save}>Save</button>
+						<button className="btn btn-dark" onClick={this.toggleEditMode}>Cancel</button>
 					</div>
-					: <div>
+					: <div style={{
+						display: "flex",
+						justifyContent: "space-between",
+						alignItems: "center",
+					}}>
 						<span>{this.props.name}</span>
-						<button onClick={this.toggleEditMode}>Edit</button>
+						<button className="btn btn-dark" onClick={this.toggleEditMode}>Edit</button>
 					</div>
 				}
 			</div>
