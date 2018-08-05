@@ -1,0 +1,76 @@
+.add-criminal-dialog-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-criminal-dialog-content-wrapper legend {
+  font-size: 16px;
+}
+.add-criminal-dialog-content-wrapper input,
+.add-criminal-dialog-content-wrapper textarea,
+.add-criminal-dialog-content-wrapper select {
+  display: inline-block;
+  border: solid 1px #ddd;
+  border-radius: 4px;
+  padding: 4px 12px;
+  min-width: 500px;
+  background-color: #fff;
+}
+.add-criminal-dialog-content-wrapper textarea {
+  height: 100px;
+}
+.add-criminal-dialog-content-wrapper input.half.margin-right {
+  margin-right: 5px;
+}
+.add-criminal-dialog-content-wrapper .hair-color {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.add-criminal-dialog-content-wrapper .hair-color input {
+  margin-top: 0.5rem;
+}
+.add-criminal-dialog-content-wrapper select {
+  height: 34px;
+}
+.add-criminal-dialog-content-wrapper input.half {
+  min-width: 245px;
+}
+.add-criminal-dialog-content-wrapper button {
+  display: inline-block;
+  border-radius: 4px;
+  background: #007bff;
+  border: none;
+  padding: 8px 16px;
+  color: #fff;
+  min-width: 200px;
+  cursor: pointer;
+}
+.upload-image {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+  align-items: center;
+}
+.upload-image input[type='file'] {
+  display: none;
+}
+.upload-image .image-container {
+  margin-bottom: 5px;
+  max-width: 200px;
+}
+.upload-image .image-container img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.upload-image .upload-button {
+  cursor: pointer;
+  width: 200px;
+  border: solid 1px #ddd;
+  color: #333;
+  border-radius: 4px;
+  text-align: center;
+  height: 38px;
+  line-height: 36px;
+}

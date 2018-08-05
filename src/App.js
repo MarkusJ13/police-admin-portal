@@ -5,6 +5,7 @@ import firebase from "firebase"
 import 'firebase/database';
 import Users from "./Users";
 import Stations from "./Stations";
+import Criminals from "./Criminals"
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const firebaseApp = firebase.initializeApp(DB_CONFIG)
@@ -29,7 +30,8 @@ class App extends Component {
 		super(props, context)
 		this.state = {
 			users: [],
-			stations: []
+			stations: [],
+			criminals: [],
 		}
 	}
 
@@ -58,15 +60,28 @@ class App extends Component {
 			}
 			this.setState({stations})
 		})
+		const criminalsRef = firebaseApp.database().ref("criminals").limitToLast(20)
+		criminalsRef.on("value", snapshot => {
+			const snapshotVal = snapshot.val()
+			let criminals = []
+			for (var key in snapshotVal){
+				criminals.push({
+					...snapshotVal[key],
+					id: key
+				})
+			}
+			this.setState({criminals})
+		})
 	}
 
 	render() {
-		const {users, stations} = this.state
+		const {users, stations, criminals} = this.state
 		return (
 			<Router>
 				<div style={{marginBottom: "20px"}}>
 					<Users users={users} firebaseApp={firebaseApp} User={this.state.User}/>
 					<Stations stations={stations} firebaseApp={firebaseApp} User={this.state.User}/>
+					<Criminals criminals={criminals} firebaseApp={firebaseApp} />
 				</div>
 			</Router>
 		);
