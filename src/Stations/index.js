@@ -37,7 +37,7 @@ export class Stations extends React.Component {
               <button
                 onClick={this.openAddWorkshopDialog}
                 className="btn btn-danger float-right">
-                Add a station
+                Add a Thana
               </button>
             </div>
           </div>

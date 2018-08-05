@@ -465,7 +465,7 @@ export class Criminals extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      isAddingNewCriminal: true,
+      isAddingNewCriminal: false,
       isAddingCriminalToDatabase: false,
     };
   }
