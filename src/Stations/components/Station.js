@@ -185,14 +185,15 @@ export class Station extends React.Component {
             <button
               onClick={this.showConfirmDeleteDialog}
               className="btn btn-danger mr-2">
-              Delete
+              <i className="fas fa-trash" />
             </button>
             <button onClick={this.enableEditMode} className="btn btn-dark">
-              Edit
+              <i className="fas fa-pencil-alt" />
             </button>
           </div>
         </div>
         <div
+          style={{paddingLeft: '8px'}}
           className={`add-new-child ${isAddingChild ? 'visible' : 'hidden'}`}>
           <input
             type="text"

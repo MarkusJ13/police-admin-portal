@@ -30,14 +30,14 @@ export class Stations extends React.Component {
     const {addUserDialogOpen} = this.state;
     return (
       <div className="row">
-        <div className="col-8 offset-2 mb-3">
+        <div className="col-12 mb-3">
           <div className="row">
             <h2 className="col-4">Stations</h2>
             <div className="offset-5 col-3">
               <button
                 onClick={this.openAddWorkshopDialog}
-                className="btn btn-danger float-right">
-                Add a Thana
+                className="btn btn-primary float-right">
+                <i className="fas fa-plus" /> Add Thana
               </button>
             </div>
           </div>

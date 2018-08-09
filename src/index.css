@@ -3,3 +3,29 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+.btn-danger-text {
+  color: #dc3545 !important;
+}
+.tabs-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.tabs-container .tabs {
+  border-bottom: solid 1px #aaa;
+  display: flex;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.tabs-container .tabs .tab {
+  padding: 10px;
+  border-bottom: solid 4px transparent;
+  cursor: pointer;
+  margin-bottom: -1px;
+  transition: border-bottom-color ease 300ms;
+  margin-right: 5px;
+}
+.tabs-container .tabs .tab.active {
+  border-bottom-color: #03a9f4;
+}

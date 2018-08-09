@@ -94,12 +94,13 @@ export class Chauki extends React.Component {
                 Add Beat
               </button>
               <button className="btn btn-dark" onClick={this.toggleEditMode}>
-                Edit
+                <i className="fas fa-pencil-alt" />
               </button>
             </div>
           </div>
         )}
         <div
+          style={{paddingLeft: '30px'}}
           className={`add-new-child ${isAddingChild ? 'visible' : 'hidden'}`}>
           <input
             type="text"

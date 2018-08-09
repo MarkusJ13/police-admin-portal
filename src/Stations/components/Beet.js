@@ -57,7 +57,7 @@ export class Beet extends React.Component {
             }}>
             <span>{this.props.name}</span>
             <button className="btn btn-dark" onClick={this.toggleEditMode}>
-              Edit
+              <i className="fas fa-pencil-alt" />
             </button>
           </div>
         )}

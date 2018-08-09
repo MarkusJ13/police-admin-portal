@@ -47,6 +47,11 @@
   min-width: 200px;
   cursor: pointer;
 }
+.add-criminal-dialog-content-wrapper button.btn.cancel {
+  color: #333;
+  background: transparent;
+  margin-right: 20px;
+}
 .upload-image {
   display: flex;
   flex-direction: column;

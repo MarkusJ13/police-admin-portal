@@ -311,7 +311,7 @@ class AddCriminal extends React.Component {
     const {onRequestClose, isAdding: isDisabled, onUpload} = this.props;
     return (
       <ReactModal
-        shouldCloseOnOverlayClick
+        shouldCloseOnOverlayClick={false}
         shouldCloseOnEsc
         onRequestClose={onRequestClose}
         isOpen
@@ -364,7 +364,7 @@ class AddCriminal extends React.Component {
             />
           </label>{' '}
           <label>
-            <legend>Father's name</legend>
+            <legend>Father'sname</legend>
             <input
               disabled={isDisabled}
               onChange={this.handleFatherNameChange}
@@ -417,11 +417,17 @@ class AddCriminal extends React.Component {
             <legend>Address</legend>
             <textarea
               disabled={isDisabled}
-              onChange={this.handleAddressMarkChange}
+              onChange={this.handleAddressChange}
               value={address}
             />
           </label>
           <div className="mt-2">
+            <button
+              className="btn cancel"
+              onClick={onRequestClose}
+              type="button">
+              Cancel
+            </button>
             <button>Save</button>
           </div>
         </form>
@@ -500,6 +506,7 @@ export class Criminals extends React.Component {
         this.setState({
           isUpdating: false,
           justAdded: true,
+          addedCriminalName: criminal.name,
           isAddingCriminalToDatabase: false,
           isAddingNewCriminal: false,
         });
@@ -522,35 +529,35 @@ export class Criminals extends React.Component {
     this.addCriminalInDatabase(data);
   };
   render() {
-    const {firebaseApp, criminals} = this.props;
+    const {firebaseApp} = this.props;
     const {
       isAddingNewCriminal,
       justAdded,
       isAddingCriminalToDatabase,
+      addedCriminalName,
     } = this.state;
     return (
       <div className="row">
-        <div className="col-8 offset-2 mb-3">
+        <div className="col-12  mb-3">
           <div className="row">
-            <h2 className="col-2">Criminals</h2>
-            <span
-              className="col-3"
-              style={{
-                fontSize: '12px',
-                display: 'flex',
-                alignItems: 'center',
-                color: 'green',
-              }}>
-              {justAdded ? 'Added one criminal' : null}
-            </span>
-            <div className="offset-4 col-3">
-              <button
-                onClick={this.openAddCriminalDialog}
-                className="btn btn-danger float-right">
-                Add a criminal
-              </button>
-            </div>
+            <button
+              onClick={this.openAddCriminalDialog}
+              className="btn btn-primary col-4 offset-4">
+              Add a criminal
+            </button>
           </div>
+          <span
+            style={{
+              fontSize: '12px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'green',
+            }}>
+            {justAdded
+              ? `${addedCriminalName} successfully added to criminal database.`
+              : null}
+          </span>
           <div className="list-group mt-2">
             {isAddingNewCriminal ? (
               <AddCriminal
@@ -560,9 +567,6 @@ export class Criminals extends React.Component {
                 onSubmit={this.addCriminal}
               />
             ) : null}
-            {criminals.map(criminal => {
-              return <Criminal {...criminal} key={criminal.id} />;
-            })}
           </div>
         </div>
       </div>
